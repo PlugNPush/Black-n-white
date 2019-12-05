@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		ED2056F123684332007E0BF2 /* echauffement.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = echauffement.py; sourceTree = "<group>"; };
 		ED30E4092358BC2E0084AF4C /* main.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; };
 		EDF0819B236F3B880070A009 /* classes.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = classes.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -17,7 +16,6 @@
 			isa = PBXGroup;
 			children = (
 				EDF0819B236F3B880070A009 /* classes.py */,
-				ED2056F123684332007E0BF2 /* echauffement.py */,
 				ED30E4092358BC2E0084AF4C /* main.py */,
 			);
 			sourceTree = "<group>";
