@@ -55,7 +55,7 @@
       </MacroExpansion>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "$(SRCROOT)/echauffement.py"
+            argument = "$(SRCROOT)/main.py"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
