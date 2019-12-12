@@ -20,7 +20,7 @@ def printField():
     for line in field:
         for s in range(0, len(line)):
             if line[s] == -1:
-                print("🟩", "", end='')
+                print("❇️", "", end='')
             elif line[s] == 0:
                 print("⚫️", "", end='')
             elif line[s] == 1:
