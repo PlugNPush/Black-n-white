@@ -232,7 +232,3 @@ printField()
 
 winner()
 
-
-print(chr(65))
-print(chr(90))
-b92(200)
