@@ -21,6 +21,9 @@ def print65(l):
     print(" ", end='')
 
 def b92(a):
+    curros = system()
+    if curros == "Darwin":
+        print(" ", end='')
     print(" ", end='')
     for i in range(0, a):
         print65(b26(i))
@@ -48,7 +51,7 @@ def printField():
     if curros == "Darwin":
         for line in field:
             sorruc += 1
-            print(sorruc, end='')
+            print(sorruc, end=' ')
             for s in range(0, len(line)):
                 if line[s] == -1:
                     print("❇️", end=' ')
