@@ -16,11 +16,11 @@ def initField(x, y):
     place(int(((len(field)-1)/2)+1), int(((len(field[len(field)-1])-1)/2)), 1)
     place(int(((len(field)-1)/2)), int(((len(field[len(field)-1])-1)/2)+1), 1)
             
-def printField():
-    for line in field:
-        for s in range(0, len(line)):
+def printField():                           
+    for line in field:              
+        for s in range(0, len(line)):           #on atribue un code a chaque pion pour les définir
             if line[s] == -1:
-                print("🟩", "", end='')
+                print("❇️", "", end='')
             elif line[s] == 0:
                 print("⚫️", "", end='')
             elif line[s] == 1:
@@ -91,10 +91,5 @@ def placePion(x, y, player):
 initField(8, 8)
 placePion(4, 2, 0)
 placePion(5, 4, 1)
+placePion(5, 5, 0)
 printField()
-
-
-
-
-
-
