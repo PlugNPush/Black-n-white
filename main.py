@@ -20,6 +20,17 @@ def print65(l):
         print(chr(l[i]), end='')
     print(" ", end='')
 
+
+def print90(s):
+    l = b26(s)
+    r = ""
+    for i in range(0, len(l)):
+        r += chr(l[i])
+    return r
+
+
+
+
 def b92(a):
     curros = system()
     if curros == "Darwin":
@@ -189,36 +200,42 @@ def listeCoup(player):
             if x+2 < len(field) and y+2 < len(field[x]):
                 if cvToBool(field[x+1][y+1]) == operator.not_(curplay) and cvToBool(field[x+2][y+2]) == curplay and field[x+1][y+1] != -1 and field[x+2][y+2] != -1:
                     valueToReturn = 0
+                    print("Vous pouvez jouer en [", x+1, ",", print90(y), "]")
             # LIGNE BAS
             if x+2 < len(field):
                 if cvToBool(field[x+1][y]) == operator.not_(curplay) and cvToBool(field[x+2][y]) == curplay and field[x+1][y] != -1 and field[x+2][y] != -1:
                     valueToReturn = 0
+                    print("Vous pouvez jouer en [", x+1, ",", print90(y), "]")
             # DIAGONALE BAS GAUCHE
             if x+2 < len(field):
                 if cvToBool(field[x+1][y-1]) == operator.not_(curplay) and cvToBool(field[x+2][y-2]) == curplay and field[x+1][y-1] != -1 and field[x+2][y-2] != -1:
                     valueToReturn = 0
+                    print("Vous pouvez jouer en [", x+1, ",", print90(y), "]")
             # DIAGONALE HAUTE DROITE
             if y+2 < len(field[x]):
                 if cvToBool(field[x-1][y+1]) == operator.not_(curplay) and cvToBool(field[x-2][y+2]) == curplay and field[x-1][y+1] != -1 and field[x-2][y+2] != -1:
                     valueToReturn = 0
+                    print("Vous pouvez jouer en [", x+1, ",", print90(y), "]")
             # COLONNE DROITE
             if y+2 < len(field[x]):
                 if cvToBool(field[x][y+1]) == operator.not_(curplay) and cvToBool(field[x][y+2]) == curplay and field[x][y+1] != -1 and field[x][y+2] != -1:
                     valueToReturn = 0
+                    print("Vous pouvez jouer en [", x+1, ",", print90(y), "]")
 
 
 
             # LIGNE VERS LE HAUT
             if cvToBool(field[x-1][y]) == operator.not_(curplay) and cvToBool(field[x-2][y]) == curplay and field[x-1][y] != -1 and field[x-2][y] != -1:
                 valueToReturn = 0
-                print("Vous pouvez jouer en [", x, ",", y, "]")
+                print("Vous pouvez jouer en [", x+1, ",", print90(y), "]")
             # COLONNE GAUCHE
             if cvToBool(field[x][y-1]) == operator.not_(curplay) and cvToBool(field[x][y-2]) == curplay and field[x][y-1] != -1 and field[x][y-2] != -1:
                 valueToReturn = 0
+                print("Vous pouvez jouer en [", x+1, ",", print90(y), "]")
             # DIAGONALE HAUTE GAUCHE
             if cvToBool(field[x-1][y-1]) == operator.not_(curplay) and cvToBool(field[x-2][y-2]) == curplay and field[x-1][y-1] != -1 and field[x-2][y-2] != -1:
                 valueToReturn = 0
-                
+                print("Vous pouvez jouer en [", x+1, ",", print90(y), "]")
     return valueToReturn
 
 
@@ -286,7 +303,7 @@ placePion(4, 2, 0)
 placePion(5, 4, 1)
 placePion(4, 5, 0)
 printField()
-listeCoup(0)
+listeCoup(1)
 
 winner()
 
