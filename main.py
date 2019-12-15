@@ -133,7 +133,8 @@ def placePion(x, y, player):
 def playerCheck(player):
     curplay = cvToBool(player)
         
-    valueToReturn = -1
+    # Vérification de la possibilité de jouer pour l'utilisateur
+    valueToReturn = -1                                
     for x in range(0, len(field)):
         for y in range(0, len(field[x])):
             # LIGNE VERS LE HAUT
