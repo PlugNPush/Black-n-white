@@ -21,6 +21,7 @@ def print65(l):
     print(" ", end='')
 
 def b92(a):
+    print(" ", end='')
     for i in range(0, a):
         print65(b26(i))
 
@@ -43,8 +44,11 @@ def printField():
     b92(len(field[0]))
     print("")
     curros = system()
+    sorruc = 0
     if curros == "Darwin":
         for line in field:
+            sorruc += 1
+            print(sorruc, end='')
             for s in range(0, len(line)):
                 if line[s] == -1:
                     print("❇️", end=' ')
@@ -55,6 +59,8 @@ def printField():
             print("")
     else:
         for line in field:
+            sorruc += 1
+            print(sorruc, end='')
             for s in range(0, len(line)):
                 if line[s] == -1:
                     print("❇️ ", end=' ')
@@ -183,7 +189,7 @@ def winner():
                 
 
 def game(player):
-#   TODO: Check if he can play, if not, check if the other player can play. If yes, switch, if not, call winner()
+# Check if he can play, if not, check if the other player can play. If yes, switch, if not, call winner()
     
     notPlayer = cvToInt(operator.not_(cvToBool(player)))
 
