@@ -1,4 +1,5 @@
 import operator
+from platform import system
 
 field = []
 
@@ -41,15 +42,27 @@ def initField(x, y):
 def printField():
     b92(len(field[0]))
     print("")
-    for line in field:
-        for s in range(0, len(line)):
-            if line[s] == -1:
-                print("❇️ ", end=' ')
-            elif line[s] == 0:
-                print("⚫️ ", end=' ')
-            elif line[s] == 1:
-                print("⚪️ ", end=' ')
-        print("")
+    curros = system()
+    if curros == "Darwin":
+        for line in field:
+            for s in range(0, len(line)):
+                if line[s] == -1:
+                    print("❇️", end=' ')
+                elif line[s] == 0:
+                    print("⚫️", end=' ')
+                elif line[s] == 1:
+                    print("⚪️", end=' ')
+            print("")
+    else:
+        for line in field:
+            for s in range(0, len(line)):
+                if line[s] == -1:
+                    print("❇️ ", end=' ')
+                elif line[s] == 0:
+                    print("⚫️ ", end=' ')
+                elif line[s] == 1:
+                    print("⚪️ ", end=' ')
+            print("")
 
 def cvToBool(arg):
     if arg == 1:
