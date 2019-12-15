@@ -44,11 +44,11 @@ def printField():
     for line in field:
         for s in range(0, len(line)):
             if line[s] == -1:
-                print("❇️", "", end='')
+                print("❇️ ", end=' ')
             elif line[s] == 0:
-                print("⚫️", "", end='')
+                print("⚫️ ", end=' ')
             elif line[s] == 1:
-                print("⚪️", "", end='')
+                print("⚪️ ", end=' ')
         print("")
 
 def cvToBool(arg):
@@ -121,8 +121,8 @@ def playerCheck(player):
     curplay = cvToBool(player)
         
     valueToReturn = -1
-    for i in range(0, len(field)):
-        for s in range(0, len(field[i])):
+    for x in range(0, len(field)):
+        for y in range(0, len(field[x])):
             # LIGNE VERS LE HAUT
             if cvToBool(field[x-1][y]) == operator.not_(curplay) and cvToBool(field[x-2][y]) == curplay and field[x-1][y] != -1 and field[x-2][y] != -1:
                 valueToReturn = 0
