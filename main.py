@@ -107,36 +107,43 @@ def placePion(x, y, player):
     curplay = cvToBool(player)
         
     valueToReturn = -1
+    
+    # DIAGONALE BAS DROTE
+    if x+2 < len(field) and y+2 < len(field[x]):
+        if cvToBool(field[x+1][y+1]) == operator.not_(curplay) and cvToBool(field[x+2][y+2]) == curplay and field[x+1][y+1] != -1 and field[x+2][y+2] != -1:
+            valueToReturn = 0
+            place(x, y, player)
+            place(x+1, y+1, player)
+    # LIGNE BAS
+    if x+2 < len(field):
+        if cvToBool(field[x+1][y]) == operator.not_(curplay) and cvToBool(field[x+2][y]) == curplay and field[x+1][y] != -1 and field[x+2][y] != -1:
+            valueToReturn = 0
+            place(x, y, player)
+            place(x+1, y, player)
+    # DIAGONALE BAS GAUCHE
+    if x+2 < len(field):
+        if cvToBool(field[x+1][y-1]) == operator.not_(curplay) and cvToBool(field[x+2][y-2]) == curplay and field[x+1][y-1] != -1 and field[x+2][y-2] != -1:
+            valueToReturn = 0
+            place(x, y, player)
+            place(x+1, y-1, player)
+    # DIAGONALE HAUTE DROITE
+    if y+2 < len(field[x]):
+        if cvToBool(field[x-1][y+1]) == operator.not_(curplay) and cvToBool(field[x-2][y+2]) == curplay and field[x-1][y+1] != -1 and field[x-2][y+2] != -1:
+            valueToReturn = 0
+            place(x, y, player)
+            place(x-1, y+1, player)
+    # COLONNE DROITE
+    if y+2 < len(field[x]):
+        if cvToBool(field[x][y+1]) == operator.not_(curplay) and cvToBool(field[x][y+2]) == curplay and field[x][y+1] != -1 and field[x][y+2] != -1:
+            valueToReturn = 0
+            place(x, y, player)
+            place(x, y+1, player)
+    
     # LIGNE VERS LE HAUT
     if cvToBool(field[x-1][y]) == operator.not_(curplay) and cvToBool(field[x-2][y]) == curplay and field[x-1][y] != -1 and field[x-2][y] != -1:
         valueToReturn = 0
         place(x, y, player)
         place(x-1, y, player)
-    # DIAGONALE HAUTE DROITE
-    if cvToBool(field[x-1][y+1]) == operator.not_(curplay) and cvToBool(field[x-2][y+2]) == curplay and field[x-1][y+1] != -1 and field[x-2][y+2] != -1:
-        valueToReturn = 0
-        place(x, y, player)
-        place(x-1, y+1, player)
-    # COLONNE DROITE
-    if cvToBool(field[x][y+1]) == operator.not_(curplay) and cvToBool(field[x][y+2]) == curplay and field[x][y+1] != -1 and field[x][y+2] != -1:
-        valueToReturn = 0
-        place(x, y, player)
-        place(x, y+1, player)
-    # DIAGONALE BAS DROTE
-    if cvToBool(field[x+1][y+1]) == operator.not_(curplay) and cvToBool(field[x+2][y+2]) == curplay and field[x+1][y+1] != -1 and field[x+2][y+2] != -1:
-        valueToReturn = 0
-        place(x, y, player)
-        place(x+1, y+1, player)
-    # LIGNE BAS
-    if cvToBool(field[x+1][y]) == operator.not_(curplay) and cvToBool(field[x+2][y]) == curplay and field[x+1][y] != -1 and field[x+2][y] != -1:
-        valueToReturn = 0
-        place(x, y, player)
-        place(x+1, y, player)
-    # DIAGONALE BAS GAUCHE
-    if cvToBool(field[x+1][y-1]) == operator.not_(curplay) and cvToBool(field[x+2][y-2]) == curplay and field[x+1][y-1] != -1 and field[x+2][y-2] != -1:
-        valueToReturn = 0
-        place(x, y, player)
-        place(x+1, y-1, player)
     # COLONNE GAUCHE
     if cvToBool(field[x][y-1]) == operator.not_(curplay) and cvToBool(field[x][y-2]) == curplay and field[x][y-1] != -1 and field[x][y-2] != -1:
         valueToReturn = 0
@@ -157,23 +164,30 @@ def playerCheck(player):
     valueToReturn = -1                                
     for x in range(0, len(field)):
         for y in range(0, len(field[x])):
+            # DIAGONALE BAS DROTE
+            if x+2 < len(field) and y+2 < len(field[x]):
+                if cvToBool(field[x+1][y+1]) == operator.not_(curplay) and cvToBool(field[x+2][y+2]) == curplay and field[x+1][y+1] != -1 and field[x+2][y+2] != -1:
+                    valueToReturn = 0
+            # LIGNE BAS
+            if x+2 < len(field):
+                if cvToBool(field[x+1][y]) == operator.not_(curplay) and cvToBool(field[x+2][y]) == curplay and field[x+1][y] != -1 and field[x+2][y] != -1:
+                    valueToReturn = 0
+            # DIAGONALE BAS GAUCHE
+            if x+2 < len(field):
+                if cvToBool(field[x+1][y-1]) == operator.not_(curplay) and cvToBool(field[x+2][y-2]) == curplay and field[x+1][y-1] != -1 and field[x+2][y-2] != -1:
+                    valueToReturn = 0
+            # DIAGONALE HAUTE DROITE
+            if y+2 < len(field[x]):
+                if cvToBool(field[x-1][y+1]) == operator.not_(curplay) and cvToBool(field[x-2][y+2]) == curplay and field[x-1][y+1] != -1 and field[x-2][y+2] != -1:
+                    valueToReturn = 0
+            # COLONNE DROITE
+            if y+2 < len(field[x]):
+                if cvToBool(field[x][y+1]) == operator.not_(curplay) and cvToBool(field[x][y+2]) == curplay and field[x][y+1] != -1 and field[x][y+2] != -1:
+                    valueToReturn = 0
+                
+                
             # LIGNE VERS LE HAUT
             if cvToBool(field[x-1][y]) == operator.not_(curplay) and cvToBool(field[x-2][y]) == curplay and field[x-1][y] != -1 and field[x-2][y] != -1:
-                valueToReturn = 0
-            # DIAGONALE HAUTE DROITE
-            if cvToBool(field[x-1][y+1]) == operator.not_(curplay) and cvToBool(field[x-2][y+2]) == curplay and field[x-1][y+1] != -1 and field[x-2][y+2] != -1:
-                valueToReturn = 0
-            # COLONNE DROITE
-            if cvToBool(field[x][y+1]) == operator.not_(curplay) and cvToBool(field[x][y+2]) == curplay and field[x][y+1] != -1 and field[x][y+2] != -1:
-                valueToReturn = 0
-            # DIAGONALE BAS DROTE
-            if cvToBool(field[x+1][y+1]) == operator.not_(curplay) and cvToBool(field[x+2][y+2]) == curplay and field[x+1][y+1] != -1 and field[x+2][y+2] != -1:
-                valueToReturn = 0
-            # LIGNE BAS
-            if cvToBool(field[x+1][y]) == operator.not_(curplay) and cvToBool(field[x+2][y]) == curplay and field[x+1][y] != -1 and field[x+2][y] != -1:
-                valueToReturn = 0
-            # DIAGONALE BAS GAUCHE
-            if cvToBool(field[x+1][y-1]) == operator.not_(curplay) and cvToBool(field[x+2][y-2]) == curplay and field[x+1][y-1] != -1 and field[x+2][y-2] != -1:
                 valueToReturn = 0
             # COLONNE GAUCHE
             if cvToBool(field[x][y-1]) == operator.not_(curplay) and cvToBool(field[x][y-2]) == curplay and field[x][y-1] != -1 and field[x][y-2] != -1:
@@ -185,7 +199,9 @@ def playerCheck(player):
     return valueToReturn
 
 
-
+def letterToNumber(letter):
+    converted = str(letter)
+    # TODO: convert with opposite of chr() (may be str()?) minus 65 and return int
 
 
 
@@ -236,16 +252,20 @@ def listeCoup(player):
             if cvToBool(field[x-1][y-1]) == operator.not_(curplay) and cvToBool(field[x-2][y-2]) == curplay and field[x-1][y-1] != -1 and field[x-2][y-2] != -1:
                 valueToReturn = 0
                 print("Vous pouvez jouer en [", x+1, ",", print90(y), "]")
+                
+                
     return valueToReturn
 
-
-
-
-
-
-
-
-
+def startGame():
+    # TODO: Request field size, by default 8x8
+    x = 8
+    y = 8
+    initField(x,y)
+    game(0)
+    
+def mainMenu():
+    # TODO: Main Menu (options chooser)
+    print("Welcome.")
 
 def winner():
     black = 0
@@ -275,11 +295,13 @@ def game(player):
             print("Joueur noir, c'est à vous. Vous pouvez jouer.")
         else:
             print("Joueur blanc, c'est à vous. Vous pouvez jouer.")
+        
+        printField()
+        #   TODO: Request which coordinates to play on and call placePion(), with a check that the move returned 0.
             
-            #   TODO: CENTRAL GAME
             
-            #   Switch the player
-            game(notPlayer)
+        #   Switch the player
+        game(notPlayer)
     else:
         if playerCheck(notPlayer) == 0:
             if player == 0:
