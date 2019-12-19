@@ -54,6 +54,9 @@ def place(x, y, player):
 
 
 def initField(x, y):
+    if x < 0 or y < 0:
+        x = 8
+        y = 8
     for i in range(0, x):
         field.append([])
         for s in range(0, y):
@@ -229,9 +232,12 @@ def playerCheck(player):
 
 
 def letterToNumber(letter):
-    converted = str(letter)
-    # TODO: convert with opposite of chr() (may be str()?) minus 65 and return int
-
+    newletter = list(letter)
+    converted = []
+    for chr in newletter:
+        converted.append(int(ord(chr)) - 65)
+    converted = ''.join(str(e) for e in converted)
+    return int(converted, 26)
 
 
 def listeCoup(player):
@@ -287,26 +293,12 @@ def listeCoup(player):
 
 
 
-
-def startGame():
-    # TODO: Request field size, by default 8x8
-    x = 8
-    y = 8
-    initField(x,y)
-    game(0)
-    
-
-
-
 def mainMenu():
     # TODO: Main Menu (options chooser)
     print("Welcome.")
 
 
-
-
-
-def winner():
+def count():
     black = 0
     white = 0
     for i in range(0, len(field)):
@@ -315,6 +307,14 @@ def winner():
                 black += 1
             elif field[i][s] == 1:
                 white += 1
+    return [black, white]
+
+
+def winner():
+    #TODO: Détécter la manière dont la partie s'est arrêtée
+    counter = count()
+    black = counter[0]
+    white = counter[1]
     
     if black > white:
         print("Bravo joueur noir, vous avez gagné !")
@@ -327,6 +327,7 @@ def winner():
 
 
 def game(player):
+# TODO: Afficher le nombre de tours
 # Check if he can play, if not, check if the other player can play. If yes, switch, if not, call winner()
     
     notPlayer = cvToInt(operator.not_(cvToBool(player)))
@@ -338,7 +339,10 @@ def game(player):
             print("Joueur blanc, c'est à vous. Vous pouvez jouer.")
         
         printField()
+        counter = count()
+        print("Il y a", counter[0], "pions noirs et", counter[1], "pions blancs sur le terrain.")
         #   TODO: Request which coordinates to play on and call placePion(), with a check that the move returned 0.
+        # TODO: Arrêter la partie ou zapper son tour sur demande
             
             
         #   Switch the player
@@ -356,7 +360,20 @@ def game(player):
             winner()
 
 
+def startGame():
+    try:
+        ins = input("Donnez la taille de terrain au format \"8x8\": ")
+        ins = ins.split("x")
+        x = int(ins[0])
+        y = int(ins[1])
+    except:
+        x = 8
+        y = 8
+    initField(x,y)
+    game(0)
+    
 
+startGame()
 
 
 
