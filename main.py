@@ -14,11 +14,17 @@ def b26(a):
         l.append(65 + 0)
     return l
 
+
+
+
 def print65(l):
     print(" ", end='')
     for i in range(0, len(l)):
         print(chr(l[i]), end='')
     print(" ", end='')
+
+
+
 
 
 def print90(s):
@@ -40,8 +46,12 @@ def b92(a):
         print65(b26(i))
 
 
+
+
 def place(x, y, player):
     field[x][y] = player
+
+
 
 def initField(x, y):
     for i in range(0, x):
@@ -54,6 +64,10 @@ def initField(x, y):
     place(int(((len(field)-1)/2)+1), int(((len(field[len(field)-1])-1)/2)), 1)
     place(int(((len(field)-1)/2)), int(((len(field[len(field)-1])-1)/2)+1), 1)
             
+
+
+
+
 def printField():
     b92(len(field[0]))
     print("")
@@ -84,17 +98,27 @@ def printField():
                     print("⚪️ ", end=' ')
             print("")
 
+
+
+
+
 def cvToBool(arg):
     if arg == 1:
         return True
     else:
         return False
 
+
+
+
 def cvToInt(arg):
     if arg == True:
         return 1
     else:
         return 0
+
+
+
 
 def placePion(x, y, player):
     if x > len(field)-1 or y > len(field[0])-1 or x < 0 or y < 0:
@@ -157,6 +181,10 @@ def placePion(x, y, player):
     
     return valueToReturn
         
+
+
+
+
 def playerCheck(player):
     curplay = cvToBool(player)
         
@@ -197,6 +225,7 @@ def playerCheck(player):
                 valueToReturn = 0
                 
     return valueToReturn
+
 
 
 def letterToNumber(letter):
@@ -256,6 +285,9 @@ def listeCoup(player):
                 
     return valueToReturn
 
+
+
+
 def startGame():
     # TODO: Request field size, by default 8x8
     x = 8
@@ -263,9 +295,16 @@ def startGame():
     initField(x,y)
     game(0)
     
+
+
+
 def mainMenu():
     # TODO: Main Menu (options chooser)
     print("Welcome.")
+
+
+
+
 
 def winner():
     black = 0
@@ -284,6 +323,8 @@ def winner():
     else:
         print("Fin de partie, égalité !")
                 
+
+
 
 def game(player):
 # Check if he can play, if not, check if the other player can play. If yes, switch, if not, call winner()
