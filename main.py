@@ -309,10 +309,10 @@ def mainMenu():
     if chooser == "D" or chooser == "d":
         startGame()
     elif chooser == "R" or chooser == "r":
-        # TODO: Expliquer les règles du jeu
         print("Le jeu Black&White est simple. Deux adversaires s'affrontent sur un terrain de taille choisie (habituellement 8x8). L'un d'entre eux est blanc, l'autre noir. En encadrant un pion de la couleur adverse dans n'importe quelle direction (haut/bas, gauche/droite et diagonales), le pion adverse encerclé se retourne pour prendre la couleur du joueur. La partie continue jusqu'au remplissage du terrain, élimination, blocage mutuel ou abandon. Le gagnant est le joueur dont la couleur sera dominante sur le terrain à la fin de la partie. A tout moment, vous disposez d'un assistant vous proposant les coups valides (plus les coups apparaissent, le mieux ils sont) ainsi que d'un droit de passage de tour.\n")
         mainMenu()
     elif chooser == "Q" or chooser == "q":
+        print("\n")
         return
     else:
         print("Erreur de lecture. Veuillez réessayer.")
