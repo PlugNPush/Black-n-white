@@ -72,6 +72,8 @@ def initField(x, y):
 
 
 
+
+
 def printField():
     b92(len(field[0]))
     print("")
@@ -188,7 +190,6 @@ def placePion(x, y, player):
     
     return valueToReturn
         
-
 
 
 
@@ -386,7 +387,7 @@ def game(player, turn = 1):
                 return
             else:
                 try:
-                    spl = list(request)
+                    spl = list(request.upper())
                     x = int(spl[1]) - 1
                     y = letterToNumber(spl[0])
                     result = placePion(x, y, player)
