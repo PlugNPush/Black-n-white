@@ -103,6 +103,8 @@ def printField():
     else:
         for line in field:
             sorruc += 1
+            if sorruc < 10:
+                print("", end=' ')
             print(sorruc, end='')
             for s in range(0, len(line)):
                 if line[s] == -1:
@@ -314,7 +316,7 @@ def listeCoup(player):
 
 def mainMenu():
     # Menu principal
-    chooser = input("Bienvenue. Menu principal.\n\nD: Démarrer une partie\nR: Règles du jeu\nQ: Quitter\n\nChoix: ")
+    chooser = input("Bienvenue.\n\nD: Démarrer une partie\nR: Règles du jeu\nQ: Quitter\n\nChoix: ")
     if chooser == "D" or chooser == "d":
         startGame()
     elif chooser == "R" or chooser == "r":
