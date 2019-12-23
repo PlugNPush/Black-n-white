@@ -54,6 +54,7 @@ def place(x, y, player):
 
 
 def initField(x, y):
+    field.clear()
     if x < 0 or y < 0:
         x = 8
         y = 8
