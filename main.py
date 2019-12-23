@@ -386,7 +386,7 @@ def game(player, turn = 1):
                 return
             else:
                 try:
-                    spl = list(request)
+                    spl = list(request.upper())
                     x = int(spl[1]) - 1
                     y = letterToNumber(spl[0])
                     result = placePion(x, y, player)
