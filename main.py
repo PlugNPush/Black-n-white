@@ -89,6 +89,9 @@ def printField():
     if curros == "Darwin":
         for line in field:
             sorruc += 1
+            print(sorruc)
+            if sorruc < 10:
+                print(" LIQQQUUUIDDDDDD!!!!!!!!! ", end=' ')
             print(sorruc, end=' ')
             for s in range(0, len(line)):
                 if line[s] == -1:
