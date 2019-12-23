@@ -1,5 +1,6 @@
 import operator
 from platform import system
+import re
 
 field = []
 
@@ -257,8 +258,11 @@ def letterToNumber(letter):
     converted = []
     for chr in newletter:
         converted.append(int(ord(chr)) - 65)
-    converted = ''.join(str(e) for e in converted)
-    return int(converted, 26)
+    converted.reverse()
+    sum = 0
+    for i in range(0, len(converted)):
+        sum += converted[i] * 26**i
+    return sum
 
 
 def listeCoup(player):
@@ -388,17 +392,19 @@ def game(player, turn = 1):
         verified = 0
         while verified == 0:
             request = input("Saisissez les coordonnées sous la forme A1 (P: passer son tour, A: abandonner, S: spoiler [AIDE]): ")
-            if request == "P" or request == "p":
+            request = request.upper()
+            if request == "P":
                 verified = 1
-            elif request == "S" or request == "s":
+            elif request == "S":
                 listeCoup(player)
-            elif request == "A" or request == "a":
+            elif request == "A":
                 verified = 1
                 winner(True)
                 return
             else:
                 try:
-                    spl = list(request.upper())
+                    spl = re.split('(\d+)', request)
+                    # Requete REGEX pour séparer les lettres des nombres (d+ -> au moins un chiffre pour faire la séparation)
                     x = int(spl[1]) - 1
                     y = letterToNumber(spl[0])
                     result = placePion(x, y, player)
