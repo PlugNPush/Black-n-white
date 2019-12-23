@@ -311,7 +311,7 @@ def listeCoup(player):
 
 
 def mainMenu():
-    # Menu principale
+    # Menu principal
     chooser = input("Bienvenue. Menu principal.\n\nD: Démarrer une partie\nR: Règles du jeu\nQ: Quitter\n\nChoix: ")
     if chooser == "D" or chooser == "d":
         startGame()
