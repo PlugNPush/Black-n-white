@@ -4,6 +4,7 @@ from platform import system
 field = []
 
 def b26(a):
+    # Convertit un nombre de base 10 en base 26 (alphabet)
     b = 26
     l = []
     while a/b != 0 :
@@ -18,6 +19,7 @@ def b26(a):
 
 
 def print65(l):
+    # Permet d'afficher une lettre a partir du numéro de la table ASCII
     print(" ", end='')
     for i in range(0, len(l)):
         print(chr(l[i]), end='')
@@ -28,6 +30,7 @@ def print65(l):
 
 
 def print90(s):
+    # Permet de retourner une lettre a partir du numéro de la table ASCII
     l = b26(s)
     r = ""
     for i in range(0, len(l)):
@@ -38,6 +41,7 @@ def print90(s):
 
 
 def b92(a):
+    # Permet d'afficher le nombre de lettres dans l'ordre croissant
     curros = system()
     if curros == "Darwin":
         print(" ", end='')
@@ -49,11 +53,13 @@ def b92(a):
 
 
 def place(x, y, player):
+    # Place le pion aux coordonnées (x, y)
     field[x][y] = player
 
 
 
 def initField(x, y):
+    # Prépare le terrain avec la taille souhaitée et place les pions de départ
     field.clear()
     if x < 0 or y < 0:
         x = 8
@@ -75,6 +81,7 @@ def initField(x, y):
 
 
 def printField():
+    # Permet d'afficher le tableau sous une forme lisible pour l'utilisateur
     b92(len(field[0]))
     print("")
     curros = system()
@@ -109,6 +116,7 @@ def printField():
 
 
 def cvToBool(arg):
+    # Permet de convertir un entier vers un booléen (vrai ou faux)
     if arg == 1:
         return True
     else:
@@ -118,6 +126,7 @@ def cvToBool(arg):
 
 
 def cvToInt(arg):
+    # Permet de convertir un booléen en entier
     if arg == True:
         return 1
     else:
@@ -127,6 +136,7 @@ def cvToInt(arg):
 
 
 def placePion(x, y, player):
+    # Permet de vérifier si les coordonnées entrées sont justes, de placer le pion et d'absorber le pion adverse
     if x > len(field)-1 or y > len(field[0])-1 or x < 0 or y < 0:
         print("Vous ne pouvez pas jouer en dehors du terrain.")
         return 1
@@ -194,9 +204,8 @@ def placePion(x, y, player):
 
 
 def playerCheck(player):
-    curplay = cvToBool(player)
-        
     # Vérification de la possibilité de jouer pour l'utilisateur
+    curplay = cvToBool(player)
     valueToReturn = -1                                
     for x in range(0, len(field)):
         for y in range(0, len(field[x])):
@@ -220,9 +229,7 @@ def playerCheck(player):
                 # COLONNE DROITE
                 if y+2 < len(field[x]):
                     if cvToBool(field[x][y+1]) == operator.not_(curplay) and cvToBool(field[x][y+2]) == curplay and field[x][y+1] != -1 and field[x][y+2] != -1:
-                        valueToReturn = 0
-                    
-                    
+                        valueToReturn = 0      
                 # LIGNE VERS LE HAUT
                 if x-2 >= 0:
                     if cvToBool(field[x-1][y]) == operator.not_(curplay) and cvToBool(field[x-2][y]) == curplay and field[x-1][y] != -1 and field[x-2][y] != -1:
@@ -241,6 +248,7 @@ def playerCheck(player):
 
 
 def letterToNumber(letter):
+    # Permet de convertir une lettre en base 10
     newletter = list(letter)
     converted = []
     for chr in newletter:
@@ -250,9 +258,8 @@ def letterToNumber(letter):
 
 
 def listeCoup(player):
+    # Donne la liste des coups valides
     curplay = cvToBool(player)
-    
-    # Donne la liste des coups valide
     valueToReturn = -1                                
     for x in range(0, len(field)):
         for y in range(0, len(field[x])):
@@ -282,9 +289,6 @@ def listeCoup(player):
                     if cvToBool(field[x][y+1]) == operator.not_(curplay) and cvToBool(field[x][y+2]) == curplay and field[x][y+1] != -1 and field[x][y+2] != -1:
                         valueToReturn = 0
                         print("Vous pouvez jouer en " + str(print90(y)) + str(x+1))
-
-
-
                 # LIGNE VERS LE HAUT
                 if x-2 >= 0:
                     if cvToBool(field[x-1][y]) == operator.not_(curplay) and cvToBool(field[x-2][y]) == curplay and field[x-1][y] != -1 and field[x-2][y] != -1:
@@ -307,6 +311,7 @@ def listeCoup(player):
 
 
 def mainMenu():
+    # Menu principale
     chooser = input("Bienvenue. Menu principal.\n\nD: Démarrer une partie\nR: Règles du jeu\nQ: Quitter\n\nChoix: ")
     if chooser == "D" or chooser == "d":
         startGame()
@@ -322,6 +327,7 @@ def mainMenu():
 
 
 def count():
+    # Permet de compter le nombre de pions noirs et blancs
     black = 0
     white = 0
     for i in range(0, len(field)):
@@ -334,6 +340,7 @@ def count():
 
 
 def winner(abandon = False):
+    # Permet de déterminer le gagnant de la partie et d'annoncer la manière à laquelle la partie s'est terminée
     counter = count()
     black = counter[0]
     white = counter[1]
@@ -361,7 +368,7 @@ def winner(abandon = False):
 
 
 def game(player, turn = 1):
-# Check if he can play, if not, check if the other player can play. If yes, switch, if not, call winner()
+    # Permet d'annoncer le nombre de tour, d'afficher le nombre de pions, de permetre au joueur de choisir son action et de déterminer si les deux joueurs peuvent jouer (fonction principale du jeu)
     print("\n\nTour", turn)
     notPlayer = cvToInt(operator.not_(cvToBool(player)))
 
@@ -398,7 +405,6 @@ def game(player, turn = 1):
                 except:
                     print("Une erreur s'est produite lors de la lecture des coordonnées.")
                 
-        #   Switch the player
         game(notPlayer, turn+1)
     else:
         if playerCheck(notPlayer) == 0:
@@ -414,6 +420,7 @@ def game(player, turn = 1):
 
 
 def startGame():
+    # Permet de créer le tableau avec la taille voulue par l'utilisateur et de démarrer la partie
     try:
         ins = input("Donnez la taille de terrain au format \"8x8\" (minimum 6x6): ")
         ins = ins.split("x")
